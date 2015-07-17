@@ -1,0 +1,10 @@
+<div class="new-bid-form">
+  <h2>Bid on this item: <%= @auction.title %></h2>
+
+  <%= simple_form_for([@auction, @bid]) do |f| %>
+    <%= f.input :amount %>
+    <%= f.submit %>
+    <% end %>
+  </div>
+
+  

@@ -1,0 +1,49 @@
+<h3>Edit <%= resource_name.to_s.humanize %></h3>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= devise_error_messages! %>
+
+<div class="field">
+  <%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :first_name %><br />
+  <%= f.text_field :first_name, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :last_name %><br />
+  <%= f.text_field :last_name, autofocus: true %>
+</div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <div>Waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password %> <i>(Leave blank if you want to keep it the same)</i><br />
+    <%= f.password_field :password, autocomplete: "Off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "Off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(We need your password to confirm changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "Off" %>
+  </div>
+
+  <div class="action">
+    <%= f.submit "Update" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Updated" %>
+  </div>
+  <% end %>
+
+  <%= link_to "Back", :back %>

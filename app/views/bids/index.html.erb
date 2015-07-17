@@ -1,0 +1,18 @@
+<div class="col-md-6">
+  <h4><%= current_user.first_name %>'s Bids</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>Auction</th>
+      <th>Biddr Date</th>
+      <th>Amount</th>
+    </tr>
+
+    <% current_user.bids.each do |bid| %>
+    <tr>
+      <td><%= bid.auction.title %></td>
+      <td><%= standard_date(bid.auction.created_at) %></td>
+      <td><%= number_to_currency(bid.amount) %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,23 @@
+<h1>Biddr - The Bidding App!</h1>
+<h3>Root Path</h3>
+<p>views/auction/index</p>
+
+<% @auctions.each do |auction| %>
+  <h3><%= link_to auction.title, auction_path(auction) %></h3>
+  <p>Seller: <%= auction.user_first_name %></p>
+  <p>Details: <%= auction.details %></p>
+  <p>End Date: <%= standard_date(auction.end.date) %></p>
+  <% if auction.aasm_state == "reserve_met" %>
+  <h3>Reserve Met</h3>
+  <% else %>
+  <h4 style="color:red"> Reserve Not Met!</h4>
+  <% end %>
+  <p>Reserve Bid: <%= number_to_currency(auction.reserve.price) %></p>
+  <p>Current Bid: <%= numebr_to_currency(auction.current_price) %></p>
+  <p><%= link_to "BID", new_auction_bid_path(auction) %></p>
+
+  <%= simple_form_for [auction, WinningBid.new], class: "form-horizontal" do |f| %>
+    <%= f.submit "Pay Now!", class: "btn btn-success" %>
+    <% end %>
+    <hr>
+    <% end %>

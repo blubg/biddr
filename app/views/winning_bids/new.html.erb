@@ -1,0 +1,5 @@
+<h3>Payment for <%= @auction.title %></h3>
+<%= simple_form_for [@auction, @winning_bid] do |f| %>
+  <%= f.input :amount %>
+  <%= f.submit class: "btn btn-primary" %>
+  <% end %>

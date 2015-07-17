@@ -1,0 +1,7 @@
+$('#bid-error').html('');
+<% if @bid.errors.any? %>
+    $('#bid-error').html('<div class="alert alert-danger"><%= @bid.errors.full_message.join('; ') %></div>').hide().fadeIn();
+  <% else %>
+    var biddr = $("<%= j render partial: 'bids/bid', locals: { bid @bid } %>").fadeIn('slow');
+    $("auction-bids-list").prepend(biddr);
+  <% end %>
